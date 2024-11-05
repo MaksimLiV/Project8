@@ -16,7 +16,11 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     var level = 1
     
     override func loadView() {
@@ -116,6 +120,11 @@ class ViewController: UIViewController {
                 let frame = CGRect(x: column * width, y: row * height, width: width, height: height)
                 letterButton.frame = frame
                 
+                // 1-ое задание добавил серую линию вокруг букв
+                letterButton.layer.borderWidth = 1
+                letterButton.layer.borderColor = UIColor.lightGray.cgColor
+                letterButton.clipsToBounds = true
+                
                 buttonsView.addSubview(letterButton)
                 letterButtons.append(letterButton)
             }
@@ -154,6 +163,10 @@ class ViewController: UIViewController {
                 present(ac, animated: true)
                 
             }
+        } else {
+            let ac = UIAlertController(title: "Wrong answer", message: "Try again", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(ac, animated: true)
         }
         
     }
