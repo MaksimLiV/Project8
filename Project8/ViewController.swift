@@ -158,17 +158,22 @@ class ViewController: UIViewController {
             score += 1
             
             if score % 7 == 0 {
-                let ac = UIAlertController(title: "Well done!", message: "Are you ready for the text level?", preferredStyle: .alert)
+                let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
-                
             }
-        } else {
-            let ac = UIAlertController(title: "Wrong answer", message: "Try again", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        }
+        else {
+
+            //3-е задание
+            score -= 1
+            if score < 0 { score = 0 }
+            
+            // 2-ое задение
+            let ac = UIAlertController(title: "Wrong Answer", message: "Try again! You lost a point.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(ac, animated: true)
         }
-        
     }
     
     func levelUp(action: UIAlertAction) {
