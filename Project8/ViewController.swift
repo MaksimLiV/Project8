@@ -165,9 +165,9 @@ class ViewController: UIViewController {
         }
         else {
 
-            //3-е задание
-            score -= 1
-            if score < 0 { score = 0 }
+            if score > 0 {
+                score -= 1
+            }
             
             // 2-ое задение
             let ac = UIAlertController(title: "Wrong Answer", message: "Try again! You lost a point.", preferredStyle: .alert)
